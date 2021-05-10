@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+TCanvas* ${1:myCan} = new TCanvas("${1/\*//}","${2:Results}",${3:800},${4:600});
+${1/\*//}->Divide(2,2);
+${1/\*//}->cd(1);
+${1/\*//}->cd(2);
+${1/\*//}->cd(3);
+${1/\*//}->cd(4);
+
+THStack* ${1:s_stack} = new THStack("${1/\*//}","${2:Title};${3:Xaxis} [${4:Unit}];${5:Yaxis} [${6:Unit}]");
+${1/\*//}->Add(${7:h_hist1},"HIST");
+${1/\*//}->Add(${8:h_hist2},"HIST");
+${1/\*//}->Write();
+
+TCanvas* ${9:c_canvas} = new TCanvas("${2/\*//}","${10:CanvasName}",800,600);
+gPad->SetGrid();
+${1/\*//}->Draw("nostack");
+gPad->BuildLegend(0.75,0.75,0.95,0.95,"");
+	]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>hStack</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
